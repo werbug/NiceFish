@@ -17,24 +17,6 @@
                 <li routerLinkActive="active" class="dropdown">
                     <a routerLink="posts">{{'app.articles' | translate}}</a>
                 </li>
-                <li class="dropdown">
-                    <a routerLink="echart">集成图表</a>
-                </li>
-                <li class="dropdown">
-                    <a routerLink="map">高德地图</a>
-                </li>
-                <li class="dropdown">
-                    <a routerLink="jquery">集成jQuery</a>
-                </li>
-                <li class="dropdown">
-                    <a routerLink="jsplumb">集成jsplumb</a>
-                </li>
-                <li class="dropdown">
-                    <a href="http://git.oschina.net/mumu-osc/NiceFish" data-toggle="dropdown" class="dropdown-toggle" target="_blank">NiceFish</a>
-                </li>
-                <li class="dropdown">
-                    <a href="http://git.oschina.net/zt_zhong/CodeBe" data-toggle="dropdown" class="dropdown-toggle" target="_blank">CodeBe</a>
-                </li>
             </ul>
             <ul *ngIf="!currentUser?.userName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -46,10 +28,7 @@
             </ul>
             <ul *ngIf="currentUser?.userName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active">
-                    <a routerLink="user">{{'app.welcome' | translate}}：{{currentUser?.userName}}</a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="manage">{{'app.console' | translate}}</a>
+                    <a routerLink="user">{{currentUser?.userName}}</a>
                 </li>
                 <li>
                     <a href="javascript:void(0);" (click)="doLogout()">{{'app.logout' | translate}}</a>

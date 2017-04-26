@@ -18,7 +18,7 @@
         "nickName":"NickName:",
         "nickName-placeholder":"2-32 characters",
         "email":"Email:",
-        "email-placeholder":"Frequently used mailboxes, sign in after verification.",
+        "email-placeholder":"Frequently used mailboxes",
         "notice":"If you do not receive a verification email in your inbox, check your trash.",
         "password":"Password:",
         "password-placeholder":"Password, at least 8 characters.",

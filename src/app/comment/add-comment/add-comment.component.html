@@ -13,10 +13,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                	<div *ngFor="let comment of comments" class="comment-item-container">
+                    <div *ngFor="let comment of comments" class="comment-item-container">
+                        <p>{{comment.username}} {{comment.date}}</p>
                         <h5>{{comment.content}}</h5>
-                        <p>{{comment.username}} {{comment.date}}</p>        		
-                	</div>
+                    </div>
                 </div>
             </div>
         </div>
