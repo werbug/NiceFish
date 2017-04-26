@@ -54,9 +54,8 @@ export class PostlistComponent implements OnInit {
 
 		return this.postService.getPostList(searchText,page).subscribe(
 			res=>{
-				this.totalItems = res["total"];
-				//TODO.正式环境中，需要去掉slice
-				this.postList = res["items"].slice(offset,end>this.totalItems?this.totalItems:end);
+				this.postList=res;
+				//this.totalItems = res["total"];
 			},
 			error => {console.log(error)},
 			() => {}

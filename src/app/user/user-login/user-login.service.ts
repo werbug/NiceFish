@@ -6,7 +6,7 @@ import { User } from '../model/user-model';
 
 @Injectable()
 export class UserLoginService {
-  public userLoginURL = 'src/mock-data/user-login-mock.json';
+  public userLoginURL = 'access/login';
   public subject: Subject<User> = new Subject<User>();
   
   constructor(public http:Http){}
@@ -16,8 +16,11 @@ export class UserLoginService {
   }
 
   public login(user:User){
+    let data = new URLSearchParams();
+    data.append('email', user.email);
+    data.append('password', user.password);
     return this.http
-            .get(this.userLoginURL)
+            .post(this.userLoginURL,data)
             .map((response: Response) => {
               let user = response.json();
               console.log("user object>"+user);
