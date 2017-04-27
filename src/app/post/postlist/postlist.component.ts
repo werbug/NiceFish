@@ -12,12 +12,12 @@ import { Post } from '../model/post-model';
   styleUrls: ['./postlist.component.scss']
 })
 export class PostlistComponent implements OnInit {
-	public maxSize:number = 5;
-	public itemsPerPage:number=5;
-	public totalItems:number;
+	public maxSize:number = 10;
+	public itemsPerPage:number=20;
+	public totalItems:number=0;
 	//不要手动对这个属性进行赋值，它是和分页工具条自动绑定的
 	public currentPage:number = 1;
-	public numPages
+	public numPages=0;
 
 	public searchText:string;
 	public searchTextStream:Subject<string> = new Subject<string>();
@@ -39,6 +39,8 @@ export class PostlistComponent implements OnInit {
 			this.loadData(this.searchText,this.currentPage);
    		});
 
+   		this.loadTotalPages();
+
 		this.searchTextStream
 	        .debounceTime(500)
 	        .distinctUntilChanged()
@@ -55,10 +57,20 @@ export class PostlistComponent implements OnInit {
 		return this.postService.getPostList(searchText,page).subscribe(
 			res=>{
 				this.postList=res;
-				//this.totalItems = res["total"];
 			},
 			error => {console.log(error)},
 			() => {}
+		);
+	}
+
+	public loadTotalPages(){
+		return this.postService.getTotalPages().subscribe(
+			res=>{
+				this.totalItems=res;
+				console.log("总页数>"+this.totalItems);
+			},
+			error=>{},
+			()=>{}
 		);
 	}
 
