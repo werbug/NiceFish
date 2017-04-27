@@ -10,7 +10,7 @@ import { Post } from '../../model/post-model';
 @Injectable()
 export class PostlistService {
   public postListURL = 'post/getPostListByPage/';
-  public postTotalPagesURL = 'post/getTotalPages';
+  public postPagerDataURL = 'post/getPagerParam';
   
   constructor(public http:Http) { }
   
@@ -27,12 +27,12 @@ export class PostlistService {
                .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
-  public getTotalPages():Observable<any>{
+  public getPagerData():Observable<any>{
     return this.http
-               .get(this.postTotalPagesURL)
+               .get(this.postPagerDataURL)
                .map((res:Response) => {
                    let result=res.json();
-                   console.log(result);
+                   console.log("分页数据>"+result);
                    return result;
                })
                .catch((error:any) => Observable.throw(error || 'Server error'));

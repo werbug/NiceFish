@@ -13,7 +13,7 @@ import { Post } from '../model/post-model';
 })
 export class PostlistComponent implements OnInit {
 	public maxSize:number = 10;
-	public itemsPerPage:number=20;
+	public itemsPerPage:number=2;
 	public totalItems:number=0;
 	//不要手动对这个属性进行赋值，它是和分页工具条自动绑定的
 	public currentPage:number = 1;
@@ -39,7 +39,9 @@ export class PostlistComponent implements OnInit {
 			this.loadData(this.searchText,this.currentPage);
    		});
 
-   		this.loadTotalPages();
+   		setTimeout(()=>{
+	   		this.loadTotalPages();
+   		},2000);
 
 		this.searchTextStream
 	        .debounceTime(500)
@@ -64,10 +66,10 @@ export class PostlistComponent implements OnInit {
 	}
 
 	public loadTotalPages(){
-		return this.postService.getTotalPages().subscribe(
+		return this.postService.getPagerData().subscribe(
 			res=>{
-				this.totalItems=res;
-				console.log("总页数>"+this.totalItems);
+				this.totalItems=res.totalItems;
+				this.itemsPerPage=res.itemsPerPage;
 			},
 			error=>{},
 			()=>{}
