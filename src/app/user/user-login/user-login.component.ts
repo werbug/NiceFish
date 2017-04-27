@@ -1,10 +1,11 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from '@angular/router';
 import { UserLoginService } from './user-login.service';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from '../model/user-model';
 import { fadeIn } from '../../animations/fade-in';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-user-login',
@@ -19,9 +20,12 @@ export class UserLoginComponent implements OnInit {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public userLoginService: UserLoginService
+        public userLoginService: UserLoginService,
+        public toastr: ToastsManager,
+        public vcr: ViewContainerRef
     ) {
         console.log(this.userLoginService);
+        this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -39,8 +43,19 @@ export class UserLoginComponent implements OnInit {
     }
 
     public doLogin():void{
-      console.log(this.user);
-      this.userLoginService.login(this.user);
+      console.log("登录表单>"+this.user);
+      this.userLoginService.login(this.user).subscribe(
+        res=>{
+              if(!res||!res.success){
+                this.toastr.error(res.msg,'系统提示');
+              }else{
+                window.localStorage.setItem("currentUser",JSON.stringify(res.msg));
+                this.userLoginService.triggerNextValue(res.msg);
+              }
+        },
+        error => {console.log(error)},
+        () => {}
+      );
     }
 
     public doLogout():void{

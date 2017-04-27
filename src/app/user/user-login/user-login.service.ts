@@ -6,7 +6,10 @@ import { User } from '../model/user-model';
 
 @Injectable()
 export class UserLoginService {
+  private headers = new Headers({'Content-Type': 'application/json'});
+
   public userLoginURL = 'access/login';
+  //顶部导航条会订阅此对象
   public subject: Subject<User> = new Subject<User>();
   
   constructor(public http:Http){}
@@ -15,33 +18,21 @@ export class UserLoginService {
       return this.subject.asObservable();
   }
 
-  public login(user:User){
-    let data = new URLSearchParams();
-    data.append('email', user.email);
-    data.append('password', user.password);
+  public login(user:User):Observable<any>{
     return this.http
-            .post(this.userLoginURL,data)
-            .map((response: Response) => {
-              let user = response.json();
-              console.log("user object>"+user);
-              if(user && user.token){
-                localStorage.setItem("currentUser",JSON.stringify(user));
-                this.subject.next(Object.assign({},user));
-              }
-              return response;
-            })
-            .subscribe(
-                data => {
-                    console.log("login success>"+data);
-                },
-                error => {
-                    console.error(error);
-                }
-            );
+            .post(this.userLoginURL,JSON.stringify(user), {headers: this.headers})
+            .map((res: Response) => {
+              let result = res.json();
+              return result;
+            });
   }
 
   public logout():void{
-    localStorage.removeItem("currentUser");
+    window.localStorage.removeItem("currentUser");
     this.subject.next(Object.assign({}));
+  }
+
+  public triggerNextValue(obj:any){
+    this.subject.next(Object.assign({},obj));
   }
 }

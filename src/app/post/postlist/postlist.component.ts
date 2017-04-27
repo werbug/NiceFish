@@ -39,9 +39,7 @@ export class PostlistComponent implements OnInit {
 			this.loadData(this.searchText,this.currentPage);
    		});
 
-   		setTimeout(()=>{
-	   		this.loadTotalPages();
-   		},2000);
+   		this.loadTotalPages();
 
 		this.searchTextStream
 	        .debounceTime(500)
