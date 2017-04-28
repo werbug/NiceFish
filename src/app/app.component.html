@@ -18,7 +18,7 @@
                     <a routerLink="posts">{{'app.articles' | translate}}</a>
                 </li>
             </ul>
-            <ul *ngIf="!currentUser?.userName" class="nav navbar-nav navbar-right">
+            <ul *ngIf="!currentUser?.nickName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a routerLink="login">{{'app.login' | translate}}</a>
                 </li>
@@ -26,9 +26,9 @@
                     <a routerLink="register">{{'app.register' | translate}}</a>
                 </li>
             </ul>
-            <ul *ngIf="currentUser?.userName" class="nav navbar-nav navbar-right">
+            <ul *ngIf="currentUser?.nickName" class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active">
-                    <a routerLink="user">{{currentUser?.userName}}</a>
+                    <a routerLink="user">{{currentUser?.nickName}}</a>
                 </li>
                 <li>
                     <a href="javascript:void(0);" (click)="doLogout()">{{'app.logout' | translate}}</a>

@@ -7,8 +7,8 @@ import { User } from '../model/user-model';
 
 @Injectable()
 export class UserRegisterService {
-    public userRegisterURL = "src/mock-data/user-register-mock.json";
-    public testEmailURL = "";
+    private headers = new Headers({'Content-Type': 'application/json'});
+    public userRegisterURL = "access/register";
     public subject: Subject<User> = new Subject<User>();
 
     constructor(public http:Http) {
@@ -18,26 +18,17 @@ export class UserRegisterService {
         return this.subject.asObservable();
     }
 
-    public register(user: User){
-        console.log(user);
-        
-        //向后台post数据的写法如下
-        // let data = new URLSearchParams();
-        // data.append('email', user.email);
-        // data.append('password', user.password);
-        // return this.http.post(this.userRegisterURL,data);
-        
+    public register(user: User):Observable<any>{
         return this.http
-                    .get(this.userRegisterURL)
+                    .post(this.userRegisterURL,JSON.stringify(user),{headers: this.headers})
                     .map((response: Response) => {
-                        let user = response.json();
-                        localStorage.setItem("currentUser",JSON.stringify(user));
-                        this.subject.next(user);    
+                        let result = response.json();
+                        //注册成功自动切换到已登录状态
+                        if(result&&!result.msg){
+                            localStorage.setItem("currentUser",JSON.stringify(result));
+                            this.subject.next(result);
+                        }
+                        return result;
                     });
-    }
-
-    public testEmail(email:string){
-        return this.http.get(this.testEmailURL)
-            .map((response: Response) => response.json());
     }
 }
