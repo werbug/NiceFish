@@ -37,8 +37,10 @@ export class AppComponent {
 			console.log("全局监听点击事件>" + event);
 		});
 
-		this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
+		if(window.localStorage.getItem("currentUser")){
+			this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+		}
+		
 		this.userLoginService.currentUser
 			.merge(this.userRegisterService.currentUser)
 			.subscribe(

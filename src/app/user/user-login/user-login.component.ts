@@ -46,12 +46,13 @@ export class UserLoginComponent implements OnInit {
       console.log("登录表单>"+this.user);
       this.userLoginService.login(this.user).subscribe(
         res=>{
-              if(!res||!res.success){
-                this.toastr.error(res.msg,'系统提示');
-              }else{
-                window.localStorage.setItem("currentUser",JSON.stringify(res.msg));
-                this.userLoginService.triggerNextValue(res.msg);
-              }
+            console.log(res);
+            if(!res||res.msg){
+              this.toastr.error(res.msg,'系统提示');
+            }else{
+              window.localStorage.setItem("currentUser",JSON.stringify(res));
+              this.userLoginService.triggerNextValue(res);
+            }
         },
         error => {console.log(error)},
         () => {}
