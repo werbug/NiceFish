@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Http, Headers, Response } from '@angular/http';
 import { User } from '../model/user-model';
+import * as md5 from 'md5';
 
 @Injectable()
 export class UserLoginService {
@@ -19,6 +20,7 @@ export class UserLoginService {
   }
 
   public login(user:User):Observable<any>{
+    user.password = md5(user.password);
     return this.http
             .post(this.userLoginURL,JSON.stringify(user), {headers: this.headers})
             .map((res: Response) => {

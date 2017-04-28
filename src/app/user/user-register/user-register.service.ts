@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-
 import { User } from '../model/user-model';
+import * as md5 from 'md5';
 
 @Injectable()
 export class UserRegisterService {
@@ -19,6 +19,7 @@ export class UserRegisterService {
     }
 
     public register(user: User):Observable<any>{
+        user.password = md5(user.password);
         return this.http
                     .post(this.userRegisterURL,JSON.stringify(user),{headers: this.headers})
                     .map((response: Response) => {
