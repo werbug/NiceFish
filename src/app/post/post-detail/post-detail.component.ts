@@ -24,7 +24,7 @@ export class PostDetailComponent implements OnInit {
     );
   }
 
-  public getPost(id:number){
+  public getPost(id:String){
     this.postDetailService
         .getPost(id)
         .subscribe(
