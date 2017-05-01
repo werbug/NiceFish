@@ -39,6 +39,7 @@ export class AppComponent {
 
 		if(window.localStorage.getItem("currentUser")){
 			this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+			//自动登录
 		}
 		
 		this.userLoginService.currentUser
