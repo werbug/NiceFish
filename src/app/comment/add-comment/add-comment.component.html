@@ -17,6 +17,7 @@
                         <p>{{comment.nickName}} {{comment.commentTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
                         <h5>{{comment.content}}</h5>
                     </div>
+                    <pagination [totalItems]="totalItems" [maxSize]="maxSize" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" firstText="{{'firstPage' | translate}}" lastText="{{'lastPage' | translate}}" previousText="{{'previousPage' | translate}}" nextText="{{'nextPage' | translate}}" [boundaryLinks]="true" [rotate]="false" (pageChanged)="pageChanged($event)" class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

@@ -51,9 +51,6 @@ export class PostlistComponent implements OnInit {
   	}
 
   	public loadData(searchText:string,page:number){
-		let offset = (this.currentPage-1)*this.itemsPerPage;
-		let end = (this.currentPage)*this.itemsPerPage;
-
 		return this.postService.getPostList(searchText,page).subscribe(
 			res=>{
 				this.postList=res;
