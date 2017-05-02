@@ -14,7 +14,7 @@ export const postRoutes=[
 		component:PostlistComponent
 	},
 	{ 
-		path: 'postdetail/:postId', 
+		path: 'postdetail/:postId/:commentId', 
 		component: PostDetailMainComponent 
 	}
 ];

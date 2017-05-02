@@ -12,8 +12,9 @@ import { PostDetailService } from './services/post-detail.service';
 export class PostDetailComponent implements OnInit {
   public post: Post = new Post();
 
-  constructor(public postDetailService: PostDetailService,
-      public activeRoute: ActivatedRoute
+  constructor(
+    public postDetailService: PostDetailService,
+    public activeRoute: ActivatedRoute
   ) { 
     console.log(this.postDetailService);
   }

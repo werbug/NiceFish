@@ -21,15 +21,15 @@ export class AddCommentComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params => this.getCommentList(params["postId"])
+      params => this.getCommentList(params["postId"],params["pageIndex"])
     );
   }
 
-  public getCommentList(postId: number){
-    this.commentService.getCommentList(postId)
+  public getCommentList(postId: String,pageIndex:String){
+    this.commentService.getCommentList(postId,pageIndex)
       .subscribe(
         data => {
-          this.comments = data["items"]
+          this.comments = data;
         },
         error => console.error(error)
       );

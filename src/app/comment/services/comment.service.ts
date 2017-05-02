@@ -9,12 +9,16 @@ import { Comment } from '../model/comment-model';
 
 @Injectable()
 export class CommentService {
-    public commentListURL = "src/mock-data/comment-mock.json";
+    public commentListURL = "comment/";
 
     constructor(public http: Http) { }
 
-    public getCommentList(postId: number):Observable<Comment[]>{
-        return this.http.get(this.commentListURL)
-            .map((res: Response) => res.json())
+    public getCommentList(postId: String,pageIndex:String):Observable<Comment[]>{
+        return this.http.get(this.commentListURL+postId)
+            .map((res: Response) => {
+            	let result=res.json();
+            	console.log(result);
+            	return result;
+           	})
     }
 }
