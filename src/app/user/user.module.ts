@@ -12,6 +12,7 @@ import { WritePostComponent } from '../post/write-post/write-post.component';
 import { UserMainComponent } from './user-main/user-main.component';
 
 import { PostTableService } from '../manage/post-table/services/post-table.service';
+import { WritePostService } from '../post/write-post/write-post.service';
 
 import { userRoutes } from './user.routes';
 
@@ -33,7 +34,8 @@ import { userRoutes } from './user.routes';
     UserMainComponent
   ],
   providers: [
-    PostTableService
+    PostTableService,
+    WritePostService
   ]
 })
 export class UserModule { }

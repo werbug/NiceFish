@@ -3,11 +3,12 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="5-140个字符，非法字符自动转义，超长自动截断。"></textarea>
+                    <form #commentForm="ngForm" (ngSubmit)="commentForm.form.valid && submitCommet()" novalidate class="form-horizontal" role="form">
+                        <div class="form-group" [ngClass]="{ 'has-error': commentForm.submitted && !content.valid }">
+                            <textarea class="form-control" rows="5" placeholder="5-140个字符，非法字符自动转义，超长自动截断。" required minlength="5" maxlength="140" name="content" [(ngModel)]="comment.content" #content="ngModel"></textarea>
+                            <div *ngIf="commentForm.submitted && !content.valid" class="text-danger">5-140个字符</div>
                         </div>
-                        <button type="button" class="btn btn-success">提交</button>
+                        <button type="submit" class="btn btn-success">提交</button>
                     </form>
                 </div>
             </div>

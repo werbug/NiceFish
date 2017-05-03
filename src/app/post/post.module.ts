@@ -6,6 +6,7 @@ import { PaginationModule } from 'ng2-bootstrap';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostlistComponent } from './postlist/postlist.component';
 import { PostlistService } from './postlist/services/postlist.service';
+import { WritePostService } from './write-post/write-post.service';
 import { PostDetailService } from './post-detail/services/post-detail.service';
 import { PostDetailMainComponent } from './post-detail-main/post-detail-main.component';
 import { AddCommentComponent } from '../comment/add-comment/add-comment.component';
@@ -31,6 +32,7 @@ import {postRoutes} from './post.routes';
     ],
     providers: [
         PostlistService,
+        WritePostService,
         PostDetailService,
         CommentService
     ]

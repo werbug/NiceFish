@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { CommentService } from '../services/comment.service';
 import { Comment } from '../model/comment-model';
+import { UserLoginService } from '../../user/user-login/user-login.service';
 
 @Component({
   selector: 'app-add-comment',
@@ -17,9 +18,11 @@ export class AddCommentComponent implements OnInit {
   public currentPage:number = 1;
   public numPages=0;
 
-  public postId:String;
+  public postId:string;
 
   public comments: Array<Comment>;
+
+  public comment:Comment=new Comment();
 
   constructor(
     public router: Router,
@@ -33,13 +36,14 @@ export class AddCommentComponent implements OnInit {
     this.activeRoute.params.subscribe(
       params => {
         this.postId=params["postId"];
+        this.comment.postId=this.postId;
         this.getCommentList(params["postId"],params["pageIndex"]);
         this.getCommentPages(params["postId"]);
       }
     );
   }
 
-  public getCommentList(postId: String,pageIndex:String){
+  public getCommentList(postId: string,pageIndex:string){
     this.commentService.getCommentList(postId,pageIndex)
       .subscribe(
         data => {
@@ -49,7 +53,7 @@ export class AddCommentComponent implements OnInit {
       );
   }
 
-  public getCommentPages(postId: String){
+  public getCommentPages(postId: string){
     this.commentService.getCommentPages(postId)
       .subscribe(
         res => {
@@ -62,5 +66,17 @@ export class AddCommentComponent implements OnInit {
 
   public pageChanged(event:any):void {
     this.router.navigateByUrl("post/postdetail/"+this.postId+"/"+event.page);
+  }
+
+  public submitCommet(){
+    this.commentService.newComment(this.comment).subscribe(
+      res => {
+        console.log(res);
+        this.currentPage=1;
+        this.getCommentList(this.postId,'1');
+        this.getCommentPages(this.postId);
+      },
+      error => console.error(error)
+    );
   }
 }
