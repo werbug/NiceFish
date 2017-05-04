@@ -1,9 +1,9 @@
 import { Component, ViewChild, ElementRef, OnInit, AfterViewInit, OnDestroy, ViewContainerRef } from '@angular/core';
 import { flyIn } from '../../animations/fly-in';
-import { Post } from './post-model';
+import { Post } from '../model/post-model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { WritePostService } from './write-post.service';
+import { WritePostService } from '../write-post.service';
 
 @Component({
   selector: 'app-write-post',
