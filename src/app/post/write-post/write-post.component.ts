@@ -88,7 +88,7 @@ export class WritePostComponent implements OnInit,AfterViewInit,OnDestroy {
     public submitPost(){
       console.log(this.editor.getContent());
       let content=this.editor.getContent();
-      this.post.content=content;
+      this.post.text=content;
       this.writePostService.newPost(this.post).subscribe(
           res=>{
             if(res&&res.success){
