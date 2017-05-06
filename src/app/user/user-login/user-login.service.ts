@@ -9,7 +9,7 @@ import * as md5 from 'md5';
 export class UserLoginService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  public userLoginURL = 'access/login';
+  public userLoginURL = 'api/access/login';
   //顶部导航条会订阅此对象
   public subject: Subject<User> = new Subject<User>();
   

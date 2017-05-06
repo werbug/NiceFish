@@ -44,7 +44,7 @@ export class WritePostComponent implements OnInit,AfterViewInit,OnDestroy {
          */
     	  tinymce.init({
       		  selector: '#post_editor',
-            skin_url: '/NiceFish/assets/skins/lightgray',
+            skin_url: '/assets/skins/lightgray',
             //menubar:false,
       		  plugins: [
               'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -55,7 +55,7 @@ export class WritePostComponent implements OnInit,AfterViewInit,OnDestroy {
             toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
             toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
             image_advtab: true,
-            codesample_content_css:'/NiceFish/assets/css/prism.css',
+            codesample_content_css:'/assets/css/prism.css',
             //文件和图片上传相关的选项
             file_browser_callback_types: 'image',
             file_browser_callback: function(field_name, url, type, win) {
@@ -88,7 +88,7 @@ export class WritePostComponent implements OnInit,AfterViewInit,OnDestroy {
     public submitPost(){
       console.log(this.editor.getContent());
       let content=this.editor.getContent();
-      this.post.text=content;
+      this.post.content=content;
       this.writePostService.newPost(this.post).subscribe(
           res=>{
             if(res&&res.success){

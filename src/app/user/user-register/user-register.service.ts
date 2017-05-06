@@ -8,7 +8,7 @@ import * as md5 from 'md5';
 @Injectable()
 export class UserRegisterService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    public userRegisterURL = "access/register";
+    public userRegisterURL = "api/access/register";
     public subject: Subject<User> = new Subject<User>();
 
     constructor(public http:Http) {

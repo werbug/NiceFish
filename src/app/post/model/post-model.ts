@@ -1,9 +1,11 @@
 export class Post {
   id: number
-  title: string
-  text: string
+  postTitle: string
+  content: string
   author: string
   postTime: Date
   readTimes: number
   commentTimes: number
+  nickName:string
+  originalURL:string
 }

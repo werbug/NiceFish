@@ -9,8 +9,8 @@ import { Post } from '../../model/post-model';
 
 @Injectable()
 export class PostlistService {
-  public postListURL = 'post/getPostListByPage/';
-  public postPagerDataURL = 'post/getPagerParam';
+  public postListURL = 'api/post/getPostListByPage/';
+  public postPagerDataURL = 'api/post/getPagerParam';
   
   constructor(public http:Http) { }
   

@@ -7,11 +7,15 @@ import 'rxjs/add/operator/map';
 export class PostTableService {
     public delURL: string = "";
     public toEditURL: string = "";
+    public dataUrl:string = "api/post/getPostByUserId";
     
     constructor(public http: Http) { }
 
-    public getPostTable(dataURL:string){
-        return this.http.get(dataURL)
+    public getPostTable(){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        this.dataUrl = this.dataUrl+"/"+currentUser['userId']+"/"+1;
+        return this.http.get(this.dataUrl)
           .map((res:Response) => res.json())
           .catch((error:any) => Observable.throw(error || 'Server error'));
     }
