@@ -11,7 +11,7 @@ import { Post } from '../model/post-model';
 export class WritePostService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  public writePostURL = 'post/newPost';
+  public writePostURL = 'api/post/newPost';
 
   constructor(public http:Http) { }
   
