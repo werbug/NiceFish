@@ -5,6 +5,7 @@ export class User {
     password: string;
     remeberMe:boolean;
     email: string;
+    token:string;
     confirmPassword: string;
     vcode:string;
 }
