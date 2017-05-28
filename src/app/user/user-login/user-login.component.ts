@@ -7,8 +7,6 @@ import { User } from '../model/user-model';
 import { fadeIn } from '../../animations/fade-in';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
-import * as md5 from 'md5';
-
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -46,7 +44,6 @@ export class UserLoginComponent implements OnInit {
 
     public doLogin():void{
       console.log("登录表单>"+this.user);
-      this.user.password = md5(this.user.password);
       this.userLoginService.login(this.user).subscribe(
         res=>{
             console.log(res);
