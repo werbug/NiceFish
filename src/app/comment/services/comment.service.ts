@@ -10,9 +10,9 @@ import { Comment } from '../model/comment-model';
 @Injectable()
 export class CommentService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    public commentListURL = 'comment';
-    public postPagerDataURL = 'comment/getPagerParam';
-    public newCommentURL = 'comment/newComment';
+    public commentListURL = 'api/comment';
+    public postPagerDataURL = 'api/comment/getPagerParam';
+    public newCommentURL = 'api/comment/newComment';
 
     constructor(public http: Http) { }
 
