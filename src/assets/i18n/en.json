@@ -4,12 +4,12 @@
         "logout":"Logout",
         "login":"Login",
         "register":"Register",
-        "articles":"Articles",
+        "articles":"Read",
         "doc":"Document",
         "console":"Console"
     },
     "post":{
-        "publish":"publish"
+        "publish":"Write"
     },    
     "userRegister":{
         "userSignUp":"User Sign Up",

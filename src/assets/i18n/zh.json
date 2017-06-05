@@ -1,6 +1,6 @@
 {
     "app": {
-        "articles": "动态",
+        "articles": "阅读",
         "welcome": "欢迎你",
         "logout": "退出",
         "login": "登录",
@@ -9,7 +9,7 @@
         "console": "管理后台"
     },
     "post": {
-        "publish": "发布文章"
+        "publish": "写作"
     },
     "userRegister":{
         "userSignUp":"用户注册",
