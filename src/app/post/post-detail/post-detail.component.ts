@@ -21,13 +21,13 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params =>this.getPost(params["postId"])
+      params =>this.getPostDetail(params["postId"])
     );
   }
 
-  public getPost(id:String){
+  public getPostDetail(id:String){
     this.postDetailService
-        .getPost(id)
+        .getPostDetail(id)
         .subscribe(
           data => this.post = data,
           error => console.error(error)

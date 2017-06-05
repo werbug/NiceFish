@@ -9,12 +9,12 @@ import { Post } from '../../model/post-model';
 
 @Injectable()
 export class PostDetailService {
-    public postDetailURL = "post/";
+    public postDetailURL = "api/post/postdetail/";
 
     constructor(public http: Http) { 
     }
 
-    public getPost(id:String):Observable<Post>{
+    public getPostDetail(id:String):Observable<Post>{
         return 	this.http
         			.get(this.postDetailURL+id)
                 	.map((res: Response) => {
