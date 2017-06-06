@@ -3,5 +3,7 @@ export class Comment{
     postId: string;
     content: string;
     date: Date;
-    username: string;
+    userName: string;
+    nickName:string;
+    email:string;
 }
