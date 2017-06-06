@@ -50,6 +50,7 @@ export class UserLoginComponent implements OnInit {
             if(!res||res.msg){
               this.toastr.error(res.msg,'系统提示');
             }else{
+              this.userLoginService.hasLogin=true;
               window.localStorage.setItem("currentUser",JSON.stringify(Object.assign(this.user,res)));
               this.userLoginService.triggerNextValue(res);
             }

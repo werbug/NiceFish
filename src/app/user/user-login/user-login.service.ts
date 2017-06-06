@@ -11,8 +11,14 @@ export class UserLoginService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   public userLoginURL = 'api/access/login';
-  //顶部导航条会订阅此对象
+  public userLogoutURL='api/access/logout';
+
+  /**
+   * 需要监控用户登录状态的地方都可以订阅这个主题
+   */
   public subject: Subject<User> = new Subject<User>();
+
+  public hasLogin:boolean=false;
   
   constructor(public http:Http){}
 
@@ -29,9 +35,16 @@ export class UserLoginService {
             });
   }
 
-  public logout():void{
-    window.localStorage.removeItem("currentUser");
-    this.subject.next(Object.assign({}));
+  public logout():Observable<any>{
+      return this.http
+            .get(this.userLogoutURL)
+            .map((res:Response)=>{
+                  console.log("用户退出登录...");
+                  this.hasLogin=false;
+                  window.localStorage.removeItem("currentUser");
+                  this.subject.next(Object.assign({}));
+                  return res;
+            });
   }
 
   public triggerNextValue(obj:any){

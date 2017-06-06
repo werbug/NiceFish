@@ -5,20 +5,21 @@
                 <div class="col-sm-12">
                     <!--如果用户已登录，不显示昵称和email输入框-->
                     <form #commentForm="ngForm" (ngSubmit)="commentForm.form.valid && submitCommet()" novalidate class="form-horizontal" role="form">
-                        <div class="form-group">
+                        <div class="form-group" *ngIf="!hasLogin">
                             <label class="col-sm-2 control-label">昵称</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" placeholder="您的昵称，不填会显示为游客" [(ngModel)]="comment.nickName" name="nickName">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" *ngIf="!hasLogin">
                             <label class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-10">
                                 <input type="email" class="form-control" placeholder="常用的Email，不填也可以" [(ngModel)]="comment.email" name="email">
                             </div>
                         </div>
                         <div class="form-group" [ngClass]="{ 'has-error': commentForm.submitted && !content.valid }">
-                            <div class="col-sm-10 col-sm-offset-2">
+                            <label class="col-sm-2 control-label">评论内容</label>
+                            <div class="col-sm-10">
                                 <textarea class="form-control" rows="5" placeholder="5-140个字符，非法字符自动转义，超长自动截断。" required minlength="5" maxlength="140" name="content" [(ngModel)]="comment.content" #content="ngModel"></textarea>
                                 <div *ngIf="commentForm.submitted && !content.valid" class="text-danger">5-140个字符，评论内容不能为空</div>
                             </div>
@@ -37,7 +38,8 @@
                         <p>{{comment.nickName}} {{comment.commentTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
                         <h5>{{comment.content}}</h5>
                     </div>
-                    <pagination [totalItems]="totalItems" [maxSize]="maxSize" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" firstText="{{'firstPage' | translate}}" lastText="{{'lastPage' | translate}}" previousText="{{'previousPage' | translate}}" nextText="{{'nextPage' | translate}}" [boundaryLinks]="true" [rotate]="false" (pageChanged)="pageChanged($event)" class="pagination-sm"></pagination>
+                    <pagination [totalItems]="totalItems" [maxSize]="maxSize" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" firstText="{{'firstPage' | translate}}" lastText="{{'lastPage' | translate}}" previousText="{{'previousPage' | translate}}" nextText="{{'nextPage' | translate}}"
+                        [boundaryLinks]="true" [rotate]="false" (pageChanged)="pageChanged($event)" class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

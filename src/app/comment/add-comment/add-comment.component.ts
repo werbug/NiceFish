@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CommentService } from '../services/comment.service';
 import { Comment } from '../model/comment-model';
 import { UserLoginService } from '../../user/user-login/user-login.service';
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-add-comment',
@@ -24,23 +25,33 @@ export class AddCommentComponent implements OnInit {
 
   public comment:Comment=new Comment();
 
+  private subscription:Subscription;
+
+  public hasLogin:boolean=false;//用户是否已经登录
+
   constructor(
     public router: Router,
     public commentService: CommentService,
-    public activeRoute: ActivatedRoute
+    public activeRoute: ActivatedRoute,
+    public userLoginService: UserLoginService
   ){
 
   }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(
-      params => {
-        this.postId=params["postId"];
-        this.comment.postId=this.postId;
-        this.getCommentList(params["postId"],params["pageIndex"]);
-        this.getCommentPages(params["postId"]);
-      }
-    );
+        this.activeRoute.params.subscribe(
+          params => {
+            this.postId=params["postId"];
+            this.comment.postId=this.postId;
+            this.getCommentList(params["postId"],params["pageIndex"]);
+            this.getCommentPages(params["postId"]);
+          }
+        );
+        this.hasLogin=this.userLoginService.hasLogin;
+  }
+
+  ngOnDestroy(){
+    
   }
 
   public getCommentList(postId: string,pageIndex:string){

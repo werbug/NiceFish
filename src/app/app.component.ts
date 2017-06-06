@@ -36,12 +36,6 @@ export class AppComponent {
 		this.globalClickCallbackFn = this.renderer.listen(this.elementRef.nativeElement, 'click', (event: any) => {
 			console.log("全局监听点击事件>" + event);
 		});
-
-		if(window.localStorage.getItem("currentUser")){
-			this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-			//如果有缓存，自动执行登录
-			this.userLoginService.login(this.currentUser);
-		}
 		
 		this.userLoginService.currentUser
 			.merge(this.userRegisterService.currentUser)
@@ -62,7 +56,23 @@ export class AppComponent {
 				}
 			},
 			error => console.error(error)
-			);
+		);
+		
+		//如果有缓存，自动执行登录
+		if(window.localStorage.getItem("currentUser")){
+			this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+			this.userLoginService.login(this.currentUser).subscribe(
+		        res=>{
+		            if(res&&!res.msg){
+		              this.userLoginService.hasLogin=true;
+		              window.localStorage.setItem("currentUser",JSON.stringify(Object.assign(this.currentUser,res)));
+		              this.userLoginService.triggerNextValue(res);
+		            }
+		        },
+		        error => {console.log(error)},
+		        () => {}
+		    );
+		}
 
 		this.translate.addLangs(["zh", "en"]);
 		this.translate.setDefaultLang('zh');
@@ -83,8 +93,13 @@ export class AppComponent {
 	}
 
 	public doLogout(): void {
-		this.userLoginService.logout();
-		this.toastr.success('退出成功！','系统提示');
-		this.router.navigateByUrl("");
+		this.userLoginService.logout().subscribe(
+			res=>{
+				this.toastr.success('退出成功！','系统提示');
+				this.router.navigateByUrl("");
+			},
+		    error => {console.log(error)},
+		    () => {}
+		);
 	}
 }
