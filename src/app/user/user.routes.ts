@@ -11,6 +11,7 @@ export const userRoutes = [
 		component:UserMainComponent,
 	    children: [
 	    	{ path: '', redirectTo:'posttable/page/1',pathMatch:'full'},
+			//write这个路由需要一个路由守卫，只允许已经登录的用户能访问这个路径，请参考manage.routes.ts里面的写法补全这个功能
 	    	{ path: 'write', component: WritePostComponent },
 	    	{ path: 'posttable/page/:page', component: PostTableComponent },
 	    	{ path: 'commenttable/page/:page', component: CommentTableComponent },

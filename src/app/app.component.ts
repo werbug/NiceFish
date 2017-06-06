@@ -102,4 +102,12 @@ export class AppComponent {
 		    () => {}
 		);
 	}
+
+	public switchToWritePost(){
+		if(this.userLoginService.hasLogin){
+			this.router.navigateByUrl("/user/write");
+		}else{
+			this.router.navigateByUrl("/login");
+		}
+	}
 }

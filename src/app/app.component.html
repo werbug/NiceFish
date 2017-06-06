@@ -18,7 +18,7 @@
                     <a routerLink="posts">{{'app.articles' | translate}}</a>
                 </li>
                 <li class="dropdown">
-                    <a routerLink="user/posts">{{'post.publish' | translate}}</a>
+                    <a href="javascript:void(0);" (click)="switchToWritePost()">{{'post.publish' | translate}}</a>
                 </li>
             </ul>
             <ul *ngIf="!currentUser?.nickName" class="nav navbar-nav navbar-right">
