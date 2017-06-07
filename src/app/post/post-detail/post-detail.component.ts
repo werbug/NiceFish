@@ -11,7 +11,7 @@ import { PostDetailService } from './services/post-detail.service';
 })
 export class PostDetailComponent implements OnInit {
   public post: Post = new Post();
-
+  
   constructor(
     public postDetailService: PostDetailService,
     public activeRoute: ActivatedRoute
@@ -21,7 +21,9 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(
-      params =>this.getPostDetail(params["postId"])
+      params =>{
+        this.getPostDetail(params["postId"]);
+      }
     );
   }
 
