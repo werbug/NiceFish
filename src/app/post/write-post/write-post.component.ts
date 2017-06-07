@@ -53,23 +53,57 @@ export class WritePostComponent implements OnInit,AfterViewInit,OnDestroy {
               'emoticons template paste textcolor colorpicker textpattern imagetools codesample'
             ],
             toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-            toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-            image_advtab: true,
+            toolbar2: 'print preview media | forecolor backcolor | codesample',
             codesample_content_css:'/assets/css/prism.css',
+            image_advtab: false,
             //文件和图片上传相关的选项
-            file_browser_callback_types: 'image',
-            file_browser_callback: function(field_name, url, type, win) {
-              console.log(type);
-              console.log(type=='image');
-              if(type=='image'){
-                  let event = new MouseEvent('click', {
-                    'view': window,
-                    'bubbles': true,
-                    'cancelable': true
-                  });
-                  let fileInput = document.getElementById('img_input');
-                  fileInput.dispatchEvent(event);
-              } 
+            file_picker_types: 'image',
+            file_picker_callback: function(callback, value, meta) {
+                  if (meta.filetype == 'image') {
+                    //选择了图片之后就会自动上传，上传成功之后才会把值回填到弹出窗里面
+                    let fileInput = <HTMLInputElement>document.getElementById('img_input');
+                    fileInput.addEventListener("change",function(event){
+                      console.log("值发生了改变");
+                      console.log(fileInput.value);
+                      let file=fileInput.files[0];
+                      console.log(file);
+                      let formData = new FormData();
+                      formData.append('file', file,file.name);
+                      let xhr=new XMLHttpRequest();
+                      xhr.withCredentials = false;
+                      xhr.open('POST', '/api/file/uploadFile');
+                      xhr.onload = function() {
+                          let json;
+                          if (xhr.status != 200) {
+                              console.log('HTTP Error: ' + xhr.status);
+                              return;
+                          }
+                          json = JSON.parse(xhr.responseText);
+                          if(!json.success){
+                              alert("上传文件失败！");
+                              return;
+                          }
+                          console.log(xhr.responseText);
+                          callback(fileInput.value,
+                              {
+                                alt:file.name,
+                                constrain:true,
+                                filetype:"image",
+                                height:"",
+                                src:"/"+json.dirName+"/"+json.fileName,
+                                width:"100%"
+                              }
+                          );
+                          fileInput.value="";//一定要清空
+                        };
+                        xhr.send(formData);
+                    });
+                    fileInput.dispatchEvent(new MouseEvent('click', {
+                      'view': window,
+                      'bubbles': true,
+                      'cancelable': true
+                    }));
+              }
             },
             setup: editor => {
           		this.editor = editor;

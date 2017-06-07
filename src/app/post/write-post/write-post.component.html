@@ -11,7 +11,12 @@
                     <div *ngIf="postForm.submitted && !originalURL.valid" class="text-danger">最长1024个字符</div>
                 </div>
                 <div class="form-group">
-                    <textarea  id="post_editor" class="form-control" rows="20" placeholder="内容，最少140字，最多1万字。图片每张最大500K，每篇文章最多50张图。"></textarea>
+                    <textarea id="post_editor" class="form-control" rows="20" placeholder="内容，最少140字，最多1万字。图片每张最大500K，每篇文章最多50张图。"></textarea>
+                    <!--用来上传图片的隐藏表单-->
+                    <iframe id="form_target" name="form_target" style="display:none"></iframe>
+                    <form id="file_upload_form" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+                        <input id="img_input" name="file" type="file">
+                    </form>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">提交</button>
