@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { CommentService } from '../services/comment.service';
@@ -28,7 +28,7 @@ export class AddCommentComponent implements OnInit {
   private subscription:Subscription;
 
   public hasLogin:boolean=false;//用户是否已经登录
-
+  
   constructor(
     public router: Router,
     public commentService: CommentService,

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="comment-form-container">
-                        <form #commentForm="ngForm" (ngSubmit)="commentForm.form.valid && submitCommet()" novalidate class="form-horizontal" role="form">
+                        <form #commentForm="ngForm" (ngSubmit)="commentForm.form.valid && submitCommet();commentForm.reset();" novalidate class="form-horizontal" role="form">
                             <!--如果用户已登录，不显示昵称和email输入框-->
                             <div class="form-group" *ngIf="!hasLogin">
                                 <div class="col-sm-12">
