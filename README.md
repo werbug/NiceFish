@@ -1,3 +1,6 @@
+
+<img src="src/assets/imgs/nicefish-jigsaw.png" width="240" alt="nicefish-jigsaw"/>
+
 # NiceFish（美人鱼）
 
 谢谢大家，过了1000个星儿了，我可以拿到一个开源奖杯了 :) 
@@ -151,74 +154,6 @@ https://git.oschina.net/zt_zhong/CodeBe
 如果您觉得看视频教程不过瘾，想要找我去现场讲，请联系我的微信。当然，现场版的演讲会更仔细，内容也比线上的版本更新更丰富多彩。微信号只谈公事，不聊天儿，也不答技术问题。
 
 ![我的微信](src/assets/imgs/angular-damo/my_wechat.jpg)
-
-以下是我最近5年以来讲Angular的部分照片，按时间线排列，供您参考：
-
-![讲课照片](src/assets/imgs/angular-damo/1.png)
-
-![讲课照片](src/assets/imgs/angular-damo/2.png)
-
-![讲课照片](src/assets/imgs/angular-damo/3.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/3-1.png)
-
-![讲课照片](src/assets/imgs/angular-damo/4.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/4-1.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/4-2.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/4-3.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/4-4.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/5.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/5-1.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/6.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/7.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/8.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/9.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/10.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/11.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/12.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/13.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/14.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/15.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/16.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/17.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/18.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/19.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/20.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/21.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/22.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/23.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/24.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/25.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/26.jpg)
-
-![讲课照片](src/assets/imgs/angular-damo/27.jpg)
 
 ## 开源许可证
  MIT
