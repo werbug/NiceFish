@@ -3,56 +3,29 @@
 
 # NiceFish（美人鱼）
 
-谢谢大家，过了1000个星儿了，我可以拿到一个开源奖杯了 :) 
+NiceFish是一个系列教学项目，都是Angular这个技术栈。
 
-既然求星儿是有效的，那就继续求星儿、求捐助。
+- NiceFish：美人鱼，这是一个微型Blog系统，前端基于Angular 4.x + PrimeNG。http://git.oschina.net/mumu-osc/NiceFish/
 
-NiceFish是一个系列项目，都是Angular这个技术栈。
-
-- NiceFish：美人鱼，这是一个微型Blog系统，前端基于Angular 4.0.0 + ng-Bootstrap。http://git.oschina.net/mumu-osc/NiceFish/
-
-- NiceFish-Admin：这是系统管理界面，基于Angular 4.0.0，http://git.oschina.net/mumu-osc/NiceFish-Admin
-
-- NiceFish-Admin-ng1：这是一个基于Angular 1.6.4（最新版）的管理后台模板，https://git.oschina.net/mumu-osc/NiceFish-Admin-ng1.git 。这个项目我需要特别说明一下，根据目前的统计数据，还有我在数十家企业实际看到的情况，国内还有大量的企业在使用Angular 1.x，而其中很多居然没有做任何AMD处理！我的天哪！前端开发发展到了今天这个状态，AMD是标配啊兄弟们。就算你还在用jQuery做项目，AMD也是必须的哦。把所有js全部压在一个大文件里面，然后在index里面一次性加载，不能再这样做了啊！所以我会很快做好这个项目，给你们一个示范，看看大型的业务项目应该如何切分目录、模块，如何做AMD加载。
+- NiceFish-Admin：这是系统管理界面，基于Angular 4.x+PrimeNG，http://git.oschina.net/mumu-osc/NiceFish-Admin
 
 - NiceFish-ionic：这是一个移动端的demo，基于ionic。http://git.oschina.net/mumu-osc/nicefish-ionic
 
 - NiceFish-SpringMybatis：这是Java版后台服务，http://git.oschina.net/mumu-osc/NiceFish-SpringMybatis 
 
-- NiceBlogElectron：这是一个基于Electron的桌面端项目，把NiceFish用Electron打包成了一个桌面端运行的程序。这是由ZTE中兴通讯的前端道友提供的，如果您正在研究如何利用Electron开发桌面端应用，请参考这个项目。
-
-NiceFish可以用来搭建个人Blog、微型SNS站点，或者用于学习Angular（其实我并不在乎你用来干嘛，那关我什么事呢对吧？）。 
-
-一起来玩儿吧！很好玩儿哦！
-
+- NiceBlogElectron：https://github.com/damoqiongqiu/NiceBlogElectron ,这是一个基于Electron的桌面端项目，把NiceFish用Electron打包成了一个桌面端运行的程序。这是由ZTE中兴通讯的前端道友提供的，我fork了一个，有几个node模块的版本号老要改，如果您正在研究如何利用Electron开发桌面端应用，请参考这个项目。
 
 ## 对应的视频教程
 
 此项目对应的视频教程（超清），包括所有PPT，请点这里：http://damoqiongqiu.github.io/videos/index.html
 
-## 演示地址
-
-![效果图](src/assets/imgs/1.png)
-
-![效果图](src/assets/imgs/2.png)
-
-![效果图](src/assets/imgs/3.png)
-
-![效果图](src/assets/imgs/4.png)
-
-![效果图](src/assets/imgs/5.png)
-
-## 目录结构描述
-
-![目录结构1](src/assets/imgs/6.png)
-
-![目录结构2](src/assets/imgs/9.png)
+有一些人抱怨说视频没有从头手敲代码，跟不上节奏，如果你是从0开始学习Angular，还是看收费版的视频吧，讲得更细致一些（我自己觉得很啰嗦），内容提纲也在我的主页上，你自己找着看。
 
 ## 用法
 
 用git克隆本项目，从命令行进入进入项目根目录，依次执行以下命令：
 
-	npm i -g cnpm
+	npm i -g cnpm --registry=https://registry.npm.taobao.org
 	cnpm i -g @angular/cli
 	cnpm install
 	ng serve
@@ -77,9 +50,9 @@ NiceFish可以用来搭建个人Blog、微型SNS站点，或者用于学习Angul
 
 如果你需要把项目发布到其它类型的Server上，例如Tomcat，需要对Server进行一些简单的配置才能支持HTML5下的PushState路由模式，我在这篇文章里面有详细的介绍https://my.oschina.net/mumu/blog/830696
 
-【注意】如果你发现ng serve起不来，或者起来有报错，请把NiceFish根目录下的node_modules目录删掉，然后重新执行cnpm install，全局的@angular/cli也需要重装。
+【注意】如果你发现ng serve起不来，或者起来有报错，请把NiceFish根目录下的node_modules目录删掉，然后重新执行cnpm install，全局的@angular/cli也需要删掉重装。
 
-## 更新
+## 如何更新NiceFish的代码
 
 打开命令行，进入NiceFish根目录，依次执行以下命令：
 
@@ -101,37 +74,39 @@ NiceFish可以用来搭建个人Blog、微型SNS站点，或者用于学习Angul
 
 angular-cli会在项目根目录下生成一个dist目录，里面就是编译、压缩好的文件了。仔细观察你会发现，这些文件的体积已经被大幅度压缩，加上gzip之后有一些文件只剩下1/4左右的大小。
 
-关于Tomcat如何启动gzip，我专门写了一篇文章来介绍配置，请点这里：https://my.oschina.net/mumu/blog/830742
-
 【请注意】最新版本的@angular/cli已经内置了对AOT和TreeShaking的支持，只要像上面这样在build的时候加上--prod参数就可以了，不需要再做任何其它任何配置工作，中文网站上的那一篇指南过时了。
 
-## 推荐项目
-ng2整合各种插件的项目-Code Be
-https://git.oschina.net/zt_zhong/CodeBe
+## 资源收集帖
 
-目前最完善的Angular组件库PrimeNG，共有81个组件，能全面覆盖你的日常开发需求：https://www.primefaces.org/primeng/#/
+https://damoqiongqiu.github.io/web%E5%89%8D%E7%AB%AF/2017/08/07/angular-learning-materials.html
 
 ## 在线交流QQ群
 
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=8db5ed802cbddbf6432d7ba7dc4f2a316be020442491eb41cbfb1a12434e8cc7" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular 1区:286047042（满）</a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=8db5ed802cbddbf6432d7ba7dc4f2a316be020442491eb41cbfb1a12434e8cc7" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular-1区-丝绸之路:286047042（满）</a>
 
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=cbfcd79e7e90939b0e2c519f475fac4792985ce2abc5ad45ec5e06ffcfe944dd" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular 2区:139357161（满）</a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=cbfcd79e7e90939b0e2c519f475fac4792985ce2abc5ad45ec5e06ffcfe944dd" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular-2区-敦煌:139357161（满）</a>
 
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=639229c8b6ad0c3a9a8f381dddf5d7785780b20d8c37eb25c91ac73ea7d37a5f" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular 3区:473129930（满）</a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=639229c8b6ad0c3a9a8f381dddf5d7785780b20d8c37eb25c91ac73ea7d37a5f" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular-3区-玉门关:473129930（满）</a>
 
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=12add102af3f67910bdc0de753dee10ebada08ab485af7e38f4dfa0ee27476f7" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular 4区:483016484（将满）</a>
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=12add102af3f67910bdc0de753dee10ebada08ab485af7e38f4dfa0ee27476f7" class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i> Angular-4区-河西走廊:483016484（满）</a>
+
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1293a6494fb306ea29d281e320a8f4ef82285fa5300f73118e6ff7a79ce76036"
+class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i>
+Angular-5区-楼兰:604253120（将满）
+</a>
+
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=fcd880ba919983dc85690642d48cf00ad0affd8d35de5f30542c895e622a8ab8"
+class="list-group-item"><i class="fa fa-qq" aria-hidden="true"></i>
+Angular-6区-凉州:124641447（将满）
+</a>
+
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=5d6b8c5296e4806142b8422ae7abca6f27b9b9b992a4dac80dc1392644e8970a"><i class="fa fa-qq" aria-hidden="true"></i>脚本娃娃-桃花岛-83163037（将满）</a>
 
 如果您有Angular相关的问题需要讨论，或者单纯想跟我Say Hello，请加上面几个扣扣群。注意，我每天都会收到大量的求助消息，真的有点忙，所以请您优先在扣扣群里面讨论问题。
 
 ## 关于我
 
 我是大漠穷秋，我的Github个人主页在这里：http://damoqiongqiu.github.io/ 。
-
-如果您觉得看视频教程不过瘾，想要找我去现场讲，请联系我的微信。当然，现场版的演讲会比线上内容更详细，而且可以带着大家实际上手写一些代码。
-
-注意，微信号只谈公事，不聊天儿，也不答技术问题。不要腆着个脸把那些很二的问题随便甩过来，有一个网站叫百度，你知道的！
-
-![我的微信](src/assets/imgs/angular-damo/my_wechat.jpg)
 
 ## 开源许可证
  MIT
