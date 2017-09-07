@@ -4,24 +4,12 @@ import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { ForgetPwdComponent } from './user/forget-pwd/forget-pwd.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
-import { ChartComponent } from './chart/chart.component';
-import { GaodeMapComponent } from './map/gaode-map/gaode-map.component';
-import { UseJqueryComponent } from './use-jquery/use-jquery.component';
-import { JsplumbDemoComponent } from './jsplumb-demo/jsplumb-demo.component';
 
 export const appRoutes=[
 	{
 		path:'',
 		redirectTo:'posts',
 		pathMatch:'full'
-	},
-	{
-		path:"echart",
-		component:ChartComponent
-	},
-	{
-		path:"map",
-		component:GaodeMapComponent
 	},
 	{
 		path:'home',
@@ -54,13 +42,6 @@ export const appRoutes=[
 	{ 
 		path: 'manage', 
 		loadChildren:'./manage/manage.module#ManageModule'
-	},	
-	{ 
-		path: 'jquery', 
-		component:UseJqueryComponent
-	},{
-		path:'jsplumb',
-		component:JsplumbDemoComponent
 	},
 	{
 		path:'**',//fallback router must in the last

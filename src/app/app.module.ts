@@ -17,12 +17,6 @@ import { ForgetPwdService } from './user/forget-pwd/forget-pwd.service';
 
 import { EqualValidator } from './user/user-register/directives/equal-validator.directive';
 
-import { ChartComponent } from './chart/chart.component';
-import { EChartOptionDirective1 } from './chart/echart-option.directive';
-import { UseJqueryComponent } from './use-jquery/use-jquery.component';
-import { GaodeMapComponent } from './map/gaode-map/gaode-map.component';
-import { AmapComponent } from './map/gaode-map/amap/amap.component';
-import { JsplumbDemoComponent } from './jsplumb-demo/jsplumb-demo.component';
 import {appRoutes} from './app.routes';
 
 export function createTranslateLoader(http: Http) {
@@ -35,13 +29,7 @@ export function createTranslateLoader(http: Http) {
     AppComponent,
     ForgetPwdComponent,
     UserRegisterComponent,
-    EqualValidator,
-    EChartOptionDirective1,
-    ChartComponent,
-    UseJqueryComponent,
-    AmapComponent,
-    GaodeMapComponent,
-    JsplumbDemoComponent
+    EqualValidator
   ],
   imports: [
     BrowserModule,
