@@ -7,18 +7,32 @@ import 'rxjs/add/operator/map';
 export class PostTableService {
     public delURL: string = "";
     public toEditURL: string = "";
-    public dataUrl:string = "api/post/getPostByUserId";
-    
+    public postListURL:string = "api/post/getPostListByUserId/";
+    public postPagerDataURL = 'api/post/getPagerParamByUserId';
+
     constructor(public http: Http) { }
 
-    public getPostTable(){
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-        this.dataUrl = this.dataUrl+"/"+currentUser['userId']+"/"+1;
-        return this.http.get(this.dataUrl)
-          .map((res:Response) => res.json())
-          .catch((error:any) => Observable.throw(error || 'Server error'));
+    public getPostList(page:number){
+        let url = this.postListURL+page;
+        return this.http
+                    .get(url)
+                    .map((res:Response) => {
+                        let result=res.json();
+                        console.log(result);
+                        return result;
+                    })
+                    .catch((error:any) => Observable.throw(error || 'Server error'));
     }
+
+    public getPagerParam():Observable<any>{
+        return this.http
+                    .get(this.postPagerDataURL)
+                    .map((res:Response) => {
+                        let result=res.json();
+                        return result;
+                    })
+                    .catch((error:any) => Observable.throw(error || 'Server error'));
+        }
 
     public del(postId: number):Observable<any>{
         return this.http.delete(this.delURL)

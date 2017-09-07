@@ -9,7 +9,7 @@ import { Post } from '../../model/post-model';
 
 @Injectable()
 export class PostlistService {
-  public postListURL = 'api/post/getPostListByPage/';
+  public postListURL = 'api/post/getPostList/';
   public postPagerDataURL = 'api/post/getPagerParam';
   
   constructor(public http:Http) { }
@@ -27,7 +27,7 @@ export class PostlistService {
                .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
-  public getPagerData():Observable<any>{
+  public getPagerParam():Observable<any>{
     return this.http
                .get(this.postPagerDataURL)
                .map((res:Response) => {
@@ -36,13 +36,5 @@ export class PostlistService {
                    return result;
                })
                .catch((error:any) => Observable.throw(error || 'Server error'));
-  }
-
-  public addPost(user:any){
-
-  }
-
-  public search() {
-    
   }
 }
